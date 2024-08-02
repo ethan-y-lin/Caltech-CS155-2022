@@ -1,0 +1,27 @@
+Problem A:
+
+In the first one, which is able to correctly classify the dataset,
+the weights seem to be randomly initialized. On the other hand, the second one 
+cannot make any decision boundaries and has its weights initialized to 0.
+
+Based on how a neural network is trained using backpropagation, this makes a lot 
+of sense. The activation function of each neuron is ReLU. The gradient of a relu function
+is x if x > 0, otherwise it is 0. Since every weight starts at 0 for the second one, the gradient
+is never non-zero which means the weight will never update and the network as a whole won't 
+learn.
+
+Problem B:
+Because the sigmoid function = 1 when x = 0, the values can actually change. However, 
+because all of the weights are identical, they will remain identical after every update, causing
+the learned classifier to be very weak. 
+
+However, for the first network, the best classification is much much slower than with ReLU.
+This is because the ReLU function is non-saturating (does not limit the output) whereas 
+the sigmoid function is (it squashes the output between 0 and 1).
+This is causes the gradient update is way too small for the step size of 0.03.
+
+Problem C: 
+
+If you were to do this, all of the weights in the network would be set to 0 because the ReLU function 
+equals zero for all negative values. This would then cause the problem seen in the second network of 
+Problem A.
